@@ -61,13 +61,13 @@
 <link href="/css/main.css?v=6.6.0" rel="stylesheet" type="text/css">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.6.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple.png?v=6.6.0">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.6.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/maho-32x32.png?v=6.6.0">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.6.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/maho-16x16.png?v=6.6.0">
 
 
   <link rel="mask-icon" href="/images/logo.svg?v=6.6.0" color="#222">
@@ -459,9 +459,18 @@
       
         
           
-            <p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fygr2h9iyij30xy0cugnd.jpg" alt="未命名文件"></p>
+          
 
           
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/12/23/客户端与tomcat服务器请求回复流程/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -561,7 +570,7 @@
                 
               
 
-              <time title="创建时间：2018-12-23 02:52:55 / 修改时间：02:56:22" itemprop="dateCreated datePublished" datetime="2018-12-23T02:52:55-05:00">2018-12-23</time>
+              <time title="创建时间：2018-12-23 02:52:55 / 修改时间：03:35:30" itemprop="dateCreated datePublished" datetime="2018-12-23T02:52:55-05:00">2018-12-23</time>
             
 
             
@@ -629,24 +638,17 @@
       
         
           
-            <h2 id="转发与重定向的区别"><a href="#转发与重定向的区别" class="headerlink" title="转发与重定向的区别"></a>转发与重定向的区别</h2><p>转发是服务器内部行为, 当客户端发送请求到服务器中的serlvet1时, 该servlet1如果没有所需的资源, 可以通过转发访问servlet2, 新的serlvet2将继续处理同一个请求，而浏览器不会知道这个过程, 转发的路径必须是同一个web容器下的url，其不能转向到其他的web路径上去</p>
-<p><strong>转发前后是一个request域对象, servlet1与servlet2共享一个request域对象</strong>.</p>
-<p>转发通过request实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获得请求转发器, 地址直接填资源名称就可以</span></span><br><span class="line">RequestDispatcher requestDispatcher=request.getRequestDispatcher(<span class="string">"/redirect2"</span>);</span><br><span class="line"><span class="comment">// 通过转发器对象转发</span></span><br><span class="line">requestDispatcher.forward(request, response);</span><br></pre></td></tr></table></figure>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fygq94mrcwj30o70co74w.jpg" alt="未命名文件"></p>
-<hr>
-<p>重定向是客户端行为, web服务器接受客户端发来的请求后发送302状态码响应及对应新的url给客户浏览器, 客户浏览器发现是302响应，则<strong>自动</strong>再发送一个新的http请求，请求url是新的地址, 服务器根据此请求寻找资源并发送给客户</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fygq93r0t9j30kb0ast9c.jpg" alt="HTTPRedirect"></p>
-<p>重定向通过response实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意和转发的区别, 这里的地址要加上项目名称</span></span><br><span class="line">response.sendRedirect(<span class="string">"/demo01/response2"</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><ol>
-<li><strong>重定向客户端请求两次 转发请求一次</strong></li>
-<li><strong>重定向地址栏url变化 转发地址不变</strong></li>
-<li><strong>重定向可以访问外部网站 转发只能是服务器内部资源</strong></li>
-<li><strong>转发性能比重定向更高</strong></li>
-</ol>
-
+          转发与重定向的区别转发是服务器内部行为, 当客户端发送请求到服务器中的serlvet1时, 该servlet1如果没有所需的资源, 可以通过转发访问servlet2, 新的serlvet2将继续处理同一个请求，而浏览器不会知道这个过程, 转发的路径必须是同一个web容器下的url，其不能转向到其他的
+          ...
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2018/12/23/转发与重定向的区别/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
