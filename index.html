@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://des643.github.io/2018/12/23/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://des643.github.io/2018/12/23/转发与重定向的区别/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="des">
@@ -366,7 +366,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2018/12/23/hello-world/" class="post-title-link" itemprop="https://des643.github.io/index.html">Hello World</a>
+                <a href="/2018/12/23/转发与重定向的区别/" class="post-title-link" itemprop="https://des643.github.io/index.html">转发与重定向的区别</a>
               
             
           </h1>
@@ -391,9 +391,13 @@
                 
               
 
-              <time title="创建时间：2018-12-23 00:08:35" itemprop="dateCreated datePublished" datetime="2018-12-23T00:08:35-05:00">2018-12-23</time>
+              <time title="创建时间：2018-12-23 02:52:55 / 修改时间：02:56:22" itemprop="dateCreated datePublished" datetime="2018-12-23T02:52:55-05:00">2018-12-23</time>
             
 
+            
+              
+
+              
             
           </span>
 
@@ -419,7 +423,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">430</span>
+                <span title="本文字数">672</span>
               
 
               
@@ -455,15 +459,22 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+            <h2 id="转发与重定向的区别"><a href="#转发与重定向的区别" class="headerlink" title="转发与重定向的区别"></a>转发与重定向的区别</h2><p>转发是服务器内部行为, 当客户端发送请求到服务器中的serlvet1时, 该servlet1如果没有所需的资源, 可以通过转发访问servlet2, 新的serlvet2将继续处理同一个请求，而浏览器不会知道这个过程, 转发的路径必须是同一个web容器下的url，其不能转向到其他的web路径上去</p>
+<p><strong>转发前后是一个request域对象, servlet1与servlet2共享一个request域对象</strong>.</p>
+<p>转发通过request实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获得请求转发器, 地址直接填资源名称就可以</span></span><br><span class="line">RequestDispatcher requestDispatcher=request.getRequestDispatcher(<span class="string">"/redirect2"</span>);</span><br><span class="line"><span class="comment">// 通过转发器对象转发</span></span><br><span class="line">requestDispatcher.forward(request, response);</span><br></pre></td></tr></table></figure>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fygq94mrcwj30o70co74w.jpg" alt="未命名文件"></p>
+<hr>
+<p>重定向是客户端行为, web服务器接受客户端发来的请求后发送302状态码响应及对应新的url给客户浏览器, 客户浏览器发现是302响应，则<strong>自动</strong>再发送一个新的http请求，请求url是新的地址, 服务器根据此请求寻找资源并发送给客户</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNbRwly1fygq93r0t9j30kb0ast9c.jpg" alt="HTTPRedirect"></p>
+<p>重定向通过response实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注意和转发的区别, 这里的地址要加上项目名称</span></span><br><span class="line">response.sendRedirect(<span class="string">"/demo01/response2"</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><ol>
+<li><strong>重定向客户端请求两次 转发请求一次</strong></li>
+<li><strong>重定向地址栏url变化 转发地址不变</strong></li>
+<li><strong>重定向可以访问外部网站 转发只能是服务器内部资源</strong></li>
+<li><strong>转发性能比重定向更高</strong></li>
+</ol>
 
           
         
@@ -559,6 +570,19 @@
               
 
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">标签</span>
+                  
+                </div>
+              
             </nav>
           
 
@@ -638,7 +662,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">0k</span>
+    <span title="站点总字数">1k</span>
   
 
   
@@ -652,15 +676,9 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v6.6.0</div>
 
 
 
