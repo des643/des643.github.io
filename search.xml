@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[客户端与tomcat服务器请求回复流程]]></title>
+    <url>%2F2018%2F12%2F23%2F%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8Etomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%B7%E6%B1%82%E5%9B%9E%E5%A4%8D%E6%B5%81%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[]]></content>
+      <tags>
+        <tag>jsp/servlet</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[转发与重定向的区别]]></title>
     <url>%2F2018%2F12%2F23%2F%E8%BD%AC%E5%8F%91%E4%B8%8E%E9%87%8D%E5%AE%9A%E5%90%91%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
     <content type="text"><![CDATA[转发与重定向的区别转发是服务器内部行为, 当客户端发送请求到服务器中的serlvet1时, 该servlet1如果没有所需的资源, 可以通过转发访问servlet2, 新的serlvet2将继续处理同一个请求，而浏览器不会知道这个过程, 转发的路径必须是同一个web容器下的url，其不能转向到其他的web路径上去 转发前后是一个request域对象, servlet1与servlet2共享一个request域对象. 转发通过request实现 1234// 获得请求转发器, 地址直接填资源名称就可以RequestDispatcher requestDispatcher=request.getRequestDispatcher("/redirect2");// 通过转发器对象转发requestDispatcher.forward(request, response); 重定向是客户端行为, web服务器接受客户端发来的请求后发送302状态码响应及对应新的url给客户浏览器, 客户浏览器发现是302响应，则自动再发送一个新的http请求，请求url是新的地址, 服务器根据此请求寻找资源并发送给客户 重定向通过response实现 12// 注意和转发的区别, 这里的地址要加上项目名称response.sendRedirect("/demo01/response2"); 区别 重定向客户端请求两次 转发请求一次 重定向地址栏url变化 转发地址不变 重定向可以访问外部网站 转发只能是服务器内部资源 转发性能比重定向更高]]></content>
